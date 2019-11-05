@@ -27,5 +27,6 @@ public:
 	void SetAt(int nIndex, char ch);
 	void Append(const char* psz);
 	void Display() const;
+	void Reverse();
 };
 #endif

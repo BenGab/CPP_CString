@@ -3,7 +3,9 @@ int main()
 {
 	CMyString a("Alma");
 	a.Display();
-	a.Append("Körte");
+	a.Append("Korte");
+	a.Display();
+	a.Reverse();
 	a.Display();
 	return 0;
 }

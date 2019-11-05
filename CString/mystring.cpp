@@ -89,11 +89,25 @@ void CMyString::Append(const char * psz)
 	strcpy(srclen - 1, appendlen, psz, newData);
 	delete[] m_pchData;
 	m_pchData = newData;
+	m_nDataLength = srclen + appendlen - 2;
 }
 
 void CMyString::Display() const
 {
 	cout << m_pchData << endl;
+}
+
+void CMyString::Reverse()
+{
+	char* newData = new char[m_nDataLength];
+	int j = 0;
+	for (int i = (m_nDataLength - 1); i >= 0; i--)
+	{
+		newData[j++] = m_pchData[i];
+	}
+	newData[j] = '\0';
+	delete m_pchData;
+	m_pchData = newData;
 }
 
 CStringException::CStringException(const char * message)
