@@ -60,7 +60,7 @@ void CMyString::operator=(const CMyString & str)
 {
 	m_nDataLength = str.m_nDataLength;
 	delete[] m_pchData;
-	m_pchData = new char(m_nDataLength + 1);
+	m_pchData = new char[m_nDataLength + 1];
 	strcpy(0, m_nDataLength - 1, str.m_pchData, m_pchData);
 }
 
