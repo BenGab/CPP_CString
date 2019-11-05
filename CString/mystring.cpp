@@ -41,7 +41,7 @@ CMyString::CMyString(const char * psz)
 
 CMyString::CMyString(char ch, int nRepeat)
 {
-	m_nDataLength = nRepeat;
+	m_nDataLength = ++nRepeat;
 	m_pchData = new char[nRepeat];
 
 	for (int i = 0; i < nRepeat - 1; i++)
@@ -53,8 +53,6 @@ CMyString::CMyString(char ch, int nRepeat)
 CMyString::~CMyString()
 {
 	delete[] m_pchData;
-	m_pchData = nullptr;
-	m_nDataLength = 0;
 }
 
 int CMyString::GetLenght() const
@@ -88,7 +86,9 @@ void CMyString::Append(const char * psz)
 	int appendlen = mystrlen(psz);
 	char* newData = new char[srclen + appendlen];
 	strcpy(0, srclen, m_pchData, newData);
-	strcpy(srclen, appendlen, psz, newData);
+	strcpy(srclen - 1, appendlen, psz, newData);
+	delete[] m_pchData;
+	m_pchData = newData;
 }
 
 void CMyString::Display() const
