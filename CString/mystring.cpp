@@ -9,6 +9,7 @@ inline void strcpy(int from, int length, const char * src, char* dst)
 	{
 		dst[from + i] = src[i];
 	}
+	dst[from + length] = '\0';
 }
 
 inline int mystrlen(const char* src)
@@ -34,7 +35,7 @@ CMyString::CMyString(const char * psz)
 	}
 
 	m_nDataLength = mystrlen(psz);
-	m_pchData = new char[m_nDataLength];
+	m_pchData = new char[m_nDataLength + 1];
 
 	strcpy(0, m_nDataLength, psz, m_pchData);
 }
@@ -53,6 +54,14 @@ CMyString::CMyString(char ch, int nRepeat)
 CMyString::~CMyString()
 {
 	delete[] m_pchData;
+}
+
+void CMyString::operator=(const CMyString & str)
+{
+	m_nDataLength = str.m_nDataLength;
+	delete[] m_pchData;
+	m_pchData = new char(m_nDataLength + 1);
+	strcpy(0, m_nDataLength - 1, str.m_pchData, m_pchData);
 }
 
 int CMyString::GetLenght() const
@@ -99,7 +108,7 @@ void CMyString::Display() const
 
 void CMyString::Reverse()
 {
-	char* newData = new char[m_nDataLength];
+	char* newData = new char[m_nDataLength + 1];
 	int j = 0;
 	for (int i = (m_nDataLength - 1); i >= 0; i--)
 	{

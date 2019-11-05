@@ -21,6 +21,7 @@ public:
 	CMyString(const char* psz);
 	CMyString(char ch, int nRepeat = 1);
 	~CMyString();
+	void operator=(const CMyString& str);
 
 	int GetLenght() const;
 	char GetAt(int nIndex) const;

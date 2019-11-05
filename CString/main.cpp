@@ -3,9 +3,10 @@ int main()
 {
 	CMyString a("Alma");
 	a.Display();
-	a.Append("Korte");
 	a.Display();
-	a.Reverse();
 	a.Display();
+	CMyString b;
+	b = a;
+	b.Display();
 	return 0;
 }
