@@ -1,3 +1,6 @@
+#ifdef _DEBUG
+#include<iostream>
+#endif // DEBUG
 #include "mystring.h"
 int main()
 {
@@ -10,5 +13,9 @@ int main()
 	b.Display();
 	CMyString c = "Banana";
 	c.Display();
+#ifdef _DEBUG
+	std::cout << "Object count: " << c.GetObjectount() << std::endl;
+#endif // DEBUG
+
 	return 0;
 }

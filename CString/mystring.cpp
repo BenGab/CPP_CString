@@ -21,6 +21,10 @@ inline int mystrlen(const char* src)
 
 CMyString::CMyString()
 {
+#ifdef _DEBUG
+	++m_iMycount;
+#endif // DEBUG
+
 	m_pchData = nullptr;
 	m_nDataLength = 0;
 }
@@ -33,6 +37,10 @@ CMyString::CMyString(const char * psz)
 		m_nDataLength = 0;
 		return;
 	}
+
+#ifdef _DEBUG
+	++m_iMycount;
+#endif // DEBUG
 
 	m_nDataLength = mystrlen(psz);
 	m_pchData = new char[m_nDataLength + 1];
@@ -47,6 +55,10 @@ CMyString::CMyString(const CMyString& str)
 		return;
 	}
 
+#ifdef _DEBUG
+	++m_iMycount;
+#endif // DEBUG
+
 	m_nDataLength = mystrlen(str.m_pchData);
 	m_pchData = new char[m_nDataLength + 1];
 	strcpy(0, m_nDataLength, str.m_pchData, m_pchData);
@@ -54,6 +66,9 @@ CMyString::CMyString(const CMyString& str)
 
 CMyString::CMyString(char ch, int nRepeat)
 {
+#ifdef _DEBUG
+	++m_iMycount;
+#endif // DEBUG
 	m_nDataLength = ++nRepeat;
 	m_pchData = new char[nRepeat];
 
@@ -66,6 +81,9 @@ CMyString::CMyString(char ch, int nRepeat)
 CMyString::~CMyString()
 {
 	delete[] m_pchData;
+#ifdef _DEBUG
+	--m_iMycount;
+#endif // DEBUG
 }
 
 CMyString& CMyString::operator=(const CMyString & str)

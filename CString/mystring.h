@@ -24,6 +24,11 @@ public:
 	~CMyString();
 	CMyString& operator=(const CMyString& str);
 
+#ifdef _DEBUG
+	static int	m_iMycount;
+	int GetObjectount() { return m_iMycount; }
+#endif // DEBUG
+
 	int GetLenght() const;
 	char GetAt(int nIndex) const;
 	void SetAt(int nIndex, char ch);
