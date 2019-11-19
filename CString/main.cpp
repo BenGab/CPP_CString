@@ -8,5 +8,7 @@ int main()
 	CMyString b;
 	b = a;
 	b.Display();
+	CMyString c = "Banana";
+	c.Display();
 	return 0;
 }

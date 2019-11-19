@@ -40,6 +40,18 @@ CMyString::CMyString(const char * psz)
 	strcpy(0, m_nDataLength, psz, m_pchData);
 }
 
+CMyString::CMyString(const CMyString& str)
+{
+	if (str.m_pchData == nullptr)
+	{
+		return;
+	}
+
+	m_nDataLength = mystrlen(str.m_pchData);
+	m_pchData = new char[m_nDataLength + 1];
+	strcpy(0, m_nDataLength, str.m_pchData, m_pchData);
+}
+
 CMyString::CMyString(char ch, int nRepeat)
 {
 	m_nDataLength = ++nRepeat;

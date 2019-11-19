@@ -19,6 +19,7 @@ private:
 public:
 	CMyString();
 	CMyString(const char* psz);
+	CMyString(const CMyString& str);
 	CMyString(char ch, int nRepeat = 1);
 	~CMyString();
 	CMyString& operator=(const CMyString& str);
