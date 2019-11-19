@@ -56,12 +56,18 @@ CMyString::~CMyString()
 	delete[] m_pchData;
 }
 
-void CMyString::operator=(const CMyString & str)
+CMyString& CMyString::operator=(const CMyString & str)
 {
+	if (this == &str)
+	{
+		return *this;
+	}
+
 	m_nDataLength = str.m_nDataLength;
 	delete[] m_pchData;
 	m_pchData = new char[m_nDataLength + 1];
 	strcpy(0, m_nDataLength - 1, str.m_pchData, m_pchData);
+	return *this;
 }
 
 int CMyString::GetLenght() const
