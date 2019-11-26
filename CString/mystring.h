@@ -23,14 +23,9 @@ public:
 	CMyString(char ch, int nRepeat = 1);
 	~CMyString();
 	CMyString& operator=(const CMyString& str);
-
-#ifdef _DEBUG
-	static int	m_iMycount;
-	int GetObjectount() { return m_iMycount; }
-#endif // DEBUG
+	char& operator[](int nIndex) const;
 
 	int GetLenght() const;
-	char GetAt(int nIndex) const;
 	void SetAt(int nIndex, char ch);
 	void Append(const char* psz);
 	void Display() const;
