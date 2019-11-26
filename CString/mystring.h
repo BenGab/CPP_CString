@@ -1,5 +1,7 @@
 #ifndef CSTRING_H
 #define CSTRING_H
+#include<fstream>
+using namespace std;
 
 class CStringException
 {
@@ -13,6 +15,7 @@ private:
 
 class CMyString
 {
+	friend ostream& operator<<(ostream& os, CMyString& str);
 private:
 	char*		m_pchData;
 	int			m_nDataLength;
